@@ -1,7 +1,7 @@
 //V1: Changed upper_Size and lower_Size from 1.1 to 100 and 0.03 to 0.05 respectively.
 //V2: Measured Scale and set a distance of 222.6 um given 10 pixels, determined through Oculus. Originally 167.7517 um to 10 pixels. 
 
-//Changed auto threshold method to Otsu's white method from Triangle white method
+//Maintained and Tested Triangle White and Black thresholding techniques. 
 
 setBatchMode(true);
 //create an array of file/image names
@@ -30,7 +30,7 @@ for(i = 0; i < names_list.length; i++1){
         run("Gaussian Blur...", "sigma=2");
         //run substract background 
         run("Top Hat...", "radius=5");
-        run("Auto Threshold", "method=Otsu white");
+        run("Auto Threshold", "method=Triangle white");
         run("Dilate");
         run("Convert to Mask");
         ///run("Analyze Particles...", "size="+ lower_Size + "-" + upper_Size + " circularity=0.2-1 show=Ellipses display add");
