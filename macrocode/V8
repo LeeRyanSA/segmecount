@@ -4,7 +4,7 @@
 //V4: Changed auto threshold method to Otsu's white method from Triangle white method. Implementation of watershed segmentation. Cleaned up Code and added Comments. Added 8 bit and 16 bit channel changing to make sure file is standardized.
 //V5: Removal of Top Hat Filter and Testing Gaussian Filter cardinality. 
 //V6:Removal of the Dilation Function
-//V7 Changing of Gaussian Values (utilization of Sigma 0.75 and Sigma 1.75)
+//V7: Changing of Gaussian Values (utilization of Sigma 0.75 and Sigma 1.75)
 
 //Change of lower_Size and upper_Size to 0.025 and 50
 
