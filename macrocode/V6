@@ -36,6 +36,7 @@ for(i = 0; i < names_list.length; i++1){
         //run gaussian filter with sigma = 2
         run("Gaussian Blur...", "sigma=2");
         run("Convert to Mask");
+        run("Watershed"); //Separation (experimental)
         ///run("Analyze Particles...", "size="+ lower_Size + "-" + upper_Size + " circularity=0.2-1 show=Ellipses display add");
         run("Analyze Particles...", "size="+ lower_Size + "-" + upper_Size + " circularity=0.2-1 show=[Overlay Masks] display record add");
         run("Set Measurements...", "area mean min centroid display add nan redirect=None decimal=3");
