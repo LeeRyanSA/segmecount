@@ -36,7 +36,7 @@ for(i = 0; i < names_list.length; i++1){
         //run substract background 
         run("Subtract Background...", "rolling=10 sliding");
         //run gaussian filter with sigma = 2
-        run("Gaussian Blur...", "sigma=1");
+        run("Gaussian Blur...", "sigma=2");
         run("Convert to Mask");
         run("Watershed"); //Separation (experimental)
         ///run("Analyze Particles...", "size="+ lower_Size + "-" + upper_Size + " circularity=0.2-1 show=Ellipses display add");
