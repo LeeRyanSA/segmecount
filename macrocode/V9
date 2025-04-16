@@ -5,7 +5,7 @@
 //V5: Removal of Top Hat Filter and Testing Gaussian Filter cardinality. 
 //V6: Removal of the Dilation Function
 //V7: Changing of Gaussian Values (utilization of Sigma 0.75 and Sigma 1.75)
-//V8: Change of lower_Size and upper_Size to 0.025 and 50 (Reverted V7) (as shown, no change in comparison with V6)
+//V8: Change of lower_Size and upper_Size to 0.025 and 50 (Reverted V7)
 
 //Rolling background subtract from 10 to 15 pixels 
 
