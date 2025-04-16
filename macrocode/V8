@@ -18,7 +18,7 @@ names_list = getFileList(indir);
 outdir = indir
 File.makeDirectory(outdir);
 print(outdir);
-lower_Size = 0.0025;
+lower_Size = 0.025;
 upper_Size = 50;
 for(i = 0; i < names_list.length; i++1){
     //Ensure that the file is a tif
