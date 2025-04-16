@@ -24,15 +24,15 @@ for(i = 0; i < names_list.length; i++1){
         open(indir + image);
 
 
-    		run("8-bit"); // Convert the image to 8-bit first (for grayscale images) // Convert back to RGB stack if required (for multi-channel images)
-    		run("16-bit"); // Convert the image to 16-bit;
-    		run("Set Scale...", "distance=222.6 known=10 unit=um");
-    		//run gaussian filter with sigma = 1
-    		run("Gaussian Blur...", "sigma=1");
-    		//run substract background 
-    		run("Subtract Background...", "rolling=10 sliding");
-    		//run gaussian filter with sigma = 2
-    		run("Gaussian Blur...", "sigma=2");
+        run("8-bit"); // Convert the image to 8-bit first (for grayscale images) // Convert back to RGB stack if required (for multi-channel images)
+        run("16-bit"); // Convert the image to 16-bit;
+        run("Set Scale...", "distance=222.6 known=10 unit=um");
+        //run gaussian filter with sigma = 1
+        run("Gaussian Blur...", "sigma=1");
+        //run substract background 
+        run("Subtract Background...", "rolling=10 sliding");
+        //run gaussian filter with sigma = 2
+        run("Gaussian Blur...", "sigma=2");
         run("Top Hat...", "radius=5");
         run("Auto Threshold", "method=Otsu white");
         run("Dilate");
