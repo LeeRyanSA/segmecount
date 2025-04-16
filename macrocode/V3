@@ -10,7 +10,7 @@ roiManager("reset");
 Dialog.create("Open folder containing images");
 indir = getDirectory("Choose Input Directory"); 
 names_list = getFileList(indir);
-outdir = indir + "/masked/"
+outdir = indir
 File.makeDirectory(outdir);
 print(outdir);
 lower_Size = 0.05;
@@ -43,7 +43,7 @@ for(i = 0; i < names_list.length; i++1){
         //Save results, then new image; remove the .tif from original name
         shortname = substring(image, 0, lastIndexOf(image, ".tif"));
         saveAs("Results", outdir + shortname + "_counts" + ".csv");
-        saveAs("tiff", outdir + shortname + "_masked");
+        saveAs("tiff", outdir + shortname);
         //save rois coordinates
         //https://forum.image.sc/t/save-xy-coordinates-for-multiple-rois/22148/9
         //numROIs=roiManager("count");
@@ -72,7 +72,7 @@ for(i = 0; i < names_list.length; i++1){
         run("Clear Results");
         
         
-        close(shortname + "_masked.tif");
+        close(shortname);
     }
     //roiManager("deselect");
     //run("Clear Results");
