@@ -31,13 +31,14 @@ for(i = 0; i < names_list.length; i++1){
         run("8-bit"); // Convert the image to 8-bit first (for grayscale images) // Convert back to RGB stack if required (for multi-channel images)
         run("16-bit"); // Convert the image to 16-bit;
         run("Set Scale...", "distance=222.6 known=10 unit=um");
-        //run gaussian filter with sigma = 0.75
-        run("Gaussian Blur...", "sigma=0.75");
+        //run gaussian filter with sigma = 1
+        run("Gaussian Blur...", "sigma=1");
         //run substract background 
         run("Subtract Background...", "rolling=10 sliding");
-        //run gaussian filter with sigma = 1.75
-        run("Gaussian Blur...", "sigma=1.75");
+        //run gaussian filter with sigma = 2
+        run("Gaussian Blur...", "sigma=1");
         run("Convert to Mask");
+        run("Watershed"); //Separation (experimental)
         ///run("Analyze Particles...", "size="+ lower_Size + "-" + upper_Size + " circularity=0.2-1 show=Ellipses display add");
         run("Analyze Particles...", "size="+ lower_Size + "-" + upper_Size + " circularity=0.2-1 show=[Overlay Masks] display record add");
         run("Set Measurements...", "area mean min centroid display add nan redirect=None decimal=3");
