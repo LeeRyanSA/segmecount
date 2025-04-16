@@ -6,7 +6,7 @@
 //V6:Removal of the Dilation Function
 //V7: Changing of Gaussian Values (utilization of Sigma 0.75 and Sigma 1.75) 
 
-//Change of lower_Size and upper_Size to 0.025 and 50 (Reverted V7) (as shown, no change in comparison with V6)
+//Change of lower_Size and upper_Size to 0.025 and 50 (Reverted V7)
 
 setBatchMode(true);
 //create an array of file/image names
