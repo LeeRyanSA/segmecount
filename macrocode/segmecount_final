@@ -38,7 +38,7 @@ function processDirectory(dir) {
             shortname = substring(image, 0, lastIndexOf(image, ".tif"));
             saveAs("Results", dir + shortname + "_counts" + ".csv");
             saveAs("tiff", dir + shortname);
-
+            roiManager("reset");
             run("Clear Results");
             close(name);
         }
