@@ -6,17 +6,17 @@ Automatic Cell Counter for use in ImageJ Fiji
 
 Structure of Github repository:
 Macrocode
-~All version of the macro. Includes original macro and final macro, marked alonviruscounter and segmecount_final respectively.
-testimages
-~Contains raw image test files, along with the resulting counts and processed images.
-Comparisons.xlsx
-~Comparisons between each version of the Macro Codes
-README.md
-~This file.
-V5 Vs V7 Comparison Counts.xlsx
-~Using a larger set of data, comparison of processed values between the V5 and the V7.
-counter.py
-~Program to open one directory and compile each .csv count file along with the file name into a single file.
+~All version of the macro. Includes original macro and final macro, marked alonviruscounter and segmecount_final respectively.  
+testimages  
+~Contains raw image test files, along with the resulting counts and processed images.  
+Comparisons.xlsx  
+~Comparisons between each version of the Macro Codes  
+README.md  
+~This file.  
+V5 Vs V7 Comparison Counts.xlsx  
+~Using a larger set of data, comparison of processed values between the V5 and the V7.  
+counter.py  
+~Program to open one directory and compile each .csv count file along with the file name into a single file.  
 
 Procedure:
 1. Utilize any imaging program for your sample data, and name the files appropriately. I would recommend utilizing .tif files due to their versatility in image processing.
