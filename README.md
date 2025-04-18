@@ -4,8 +4,8 @@ Tentative Description.
 
 Automatic Cell Counter for use in ImageJ Fiji
 
-Structure of Github repository:
-Macrocode
+Structure of Github repository:  
+Macrocode  
 ~All version of the macro. Includes original macro and final macro, marked alonviruscounter and segmecount_final respectively.  
 testimages  
 ~Contains raw image test files, along with the resulting counts and processed images.  
