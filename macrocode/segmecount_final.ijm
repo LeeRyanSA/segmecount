@@ -9,53 +9,60 @@
 setBatchMode(true);
 
 // Function to process a directory and its subdirectories
-function processDirectory(dir) {
-    names_list = getFileList(dir);  // Get list of files/folders in the directory
+function processDirectory(dir, outdir) {
+    names_list = getFileList(dir); 
 
     for (i = 0; i < names_list.length; i++) {
         image = names_list[i];
         currentPath = dir + image;
+       
+        if (endsWith(image, ".tif")) {
+            processedImagePath = outdir + substring(image, 0, lastIndexOf(image, ".tif")) + "_processed.tif"; // Define processed file path
 
-        // If it's a directory, call the function recursively
-        if (File.isDirectory(currentPath)) {
-            processDirectory(currentPath + "/");  // Recursively process subdirectories
-        } else if (endsWith(image, ".tif")) {  // If it's a .tif image
-            open(currentPath);
+           
+            if (File.isDirectory(currentPath)) {
+                processDirectory(currentPath + "/", outdir);  // Recursively process subdirectories
+            } else {  
+                if (File.exists(processedImagePath)) {
+                    print("Skipping already processed file: " + image);
+                    continue;  
+                }
 
-            run("8-bit"); // Convert the image to 8-bit first (for grayscale images) 
-            run("16-bit"); // Convert the image to 16-bit;
-            run("Set Scale...", "distance=222.6 known=10 unit=um");
-            run("Gaussian Blur...", "sigma=0.75"); // Run Gaussian filter with sigma = 0.75
-            run("Subtract Background...", "rolling=10 sliding");
-            run("Gaussian Blur...", "sigma=1.75"); // Run Gaussian filter with sigma = 1.75
-            run("Convert to Mask");
-            run("Watershed"); // Separation (experimental)
-            run("Analyze Particles...", "size=" + lower_Size + "-" + upper_Size + " circularity=0.2-1 show=[Overlay Masks] display record add");
-            run("Set Measurements...", "area mean min centroid display add nan redirect=None decimal=3");
+                open(currentPath);
 
-            // Save results
-            name = getTitle();
-            shortname = substring(image, 0, lastIndexOf(image, ".tif"));
-            saveAs("Results", dir + shortname + "_counts" + ".csv");
-            saveAs("tiff", dir + shortname);
-            roiManager("reset");
-            run("Clear Results");
-            close(name);
+                run("8-bit"); // Convert the image to 8-bit first (for grayscale images) 
+                run("16-bit"); // Convert the image to 16-bit;
+                run("Set Scale...", "distance=222.6 known=10 unit=um");
+                run("Gaussian Blur...", "sigma=0.75"); // Run Gaussian filter with sigma = 0.75
+                run("Subtract Background...", "rolling=10 sliding");
+                run("Gaussian Blur...", "sigma=1.75"); // Run Gaussian filter with sigma = 1.75
+                run("Convert to Mask");
+                run("Watershed"); // Separation (experimental)
+                run("Analyze Particles...", "size=" + lower_Size + "-" + upper_Size + " circularity=0.2-1 show=[Overlay Masks] display record add");
+                run("Set Measurements...", "area mean min centroid display add nan redirect=None decimal=3");
+                
+                name = getTitle();
+                shortname = substring(image, 0, lastIndexOf(image, ".tif"));
+                saveAs("Results", outdir + shortname + "_counts" + ".csv");  // Save result CSV to the processed folder
+                saveAs("Tiff", outdir + shortname + "_processed.tif");  // Save processed image to the processed folder
+                roiManager("reset");
+                run("Clear Results");
+                close(name);
+            }
         }
     }
 }
 
-// Dialog box to choose the input directory
+
 Dialog.create("Open folder containing images");
 indir = getDirectory("Choose Input Directory"); 
-outdir = indir;  // You can change this if you want a different output directory
+outdir = indir + "/processed/";  
 File.makeDirectory(outdir);
 print(outdir);
 
 lower_Size = 0.05;
 upper_Size = 100;
 
-// Process the selected directory and all its subdirectories
-processDirectory(indir);
+processDirectory(indir, outdir);
 
 setBatchMode(false);
